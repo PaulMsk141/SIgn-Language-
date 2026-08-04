@@ -59,12 +59,15 @@ cd datasets && oxen clone https://hub.oxen.ai/PaulMsk/signlanguagetestdata && cd
 
 ```bash
 python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt torch matplotlib scikit-learn tqdm
+pip install torch numpy opencv-python matplotlib pandas scikit-learn tqdm ipykernel
 ```
 
+That is exactly what the three notebooks below import. `requirements.txt` covers the
+whole repo, including the older TensorFlow image models, and is not needed here.
+
 `_hand_models/` is already in the repo. It holds the pretrained MediaPipe handpose
-weights (palm detection + landmark extraction) used during keypoint extraction, so
-there is nothing to download.
+weights (palm detection + landmark extraction) as TorchScript, loaded with
+`torch.jit.load`, so there is nothing to download and no `mediapipe` install.
 
 ## Training
 
